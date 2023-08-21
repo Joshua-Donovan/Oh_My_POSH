@@ -23,6 +23,8 @@ I did find that using the Az Module in the runspaces with a service principal wa
 
 > NOTE: I manually have my billing periods "hard coded" to the 15th of each month in the "Get-DaysTillReset" function. 
 
+> NOTE: Errors / Status is shown in the top block in an Orange segment. If the script successfully runs the first iteration it will hide its-self until there is an error or the monitoring loop exits. 
+
 ## Environment
 - Windows 10/11
 - Administrator Access required for installations
