@@ -17,7 +17,13 @@ The PowerShell Profile Script uses runspaces to allow for async processing of yo
 
 In the current configuration, this data updates once every 5 minutes. 
 
-I did find that using the Az Module in the runspaces with a service principal was causing my main console to have its AzContext set to the service principal when the report is ran. So, that is why the Az cmdlets are run within jobs on a different process to avoid screwing with the current AzContext I might be actively using. 
+I did find that using the Az Module in the runspaces with a service principal was causing my main console to have its AzContext set to the service principal when the report is ran. So, that is why the Az cmdlets are run within jobs on a different process to avoid screwing with the current AzContext I might be actively using.
+
+> NOTE: I have not added automatically pulling a budget total for the remaining cost. This is "hard coded" in the PowerShell Profile to 150.00.
+
+> NOTE: I manually have my billing periods "hard coded" to the 15th of each month in the "Get-DaysTillReset" function. 
+
+> NOTE: Errors / Status is shown in the top block in an Orange segment. If the script successfully runs the first iteration it will hide its-self until there is an error or the monitoring loop exits. 
 
 ## Environment
 - Windows 10/11
@@ -77,7 +83,7 @@ Install-Module -Name Az -Repository PSGallery
 ```
 Install-Module -Name Az.ResourceGraph -Repository PSGallery
 ```
-### Secrets
+### Secrets / Environment
 ```
 Install-Module -Name Microsoft.PowerShell.SecretManagement -Repository PSGallery
 Install-Module -Name Microsoft.PowerShell.SecretStore -Repository PSGallery
@@ -131,7 +137,7 @@ I am choosing to set my authentication to none for ease of use, don't follow thi
 ```
 Set-SecretStoreConfiguration -Authentication none
 ```
-Fill in your application registration data we copied earlier
+Fill in your application registration data we copied earlier plus the SubscriptionID we are monitoring
 ```
 Set-Secret -Name POSH_AZURE_TENANT_ID -Secret "{ Tenant ID }" -Vault PWSH_PROFILE
 Set-Secret -Name POSH_AZURE_SUBSCRIPTION_ID -Secret "{ Subscription ID }" -Vault PWSH_PROFILE
