@@ -137,17 +137,13 @@ $Runspace.Open()
             $returnArray = New-Object System.Collections.ArrayList
             ($Report | Group-Object -Property InstanceId) `
             | Foreach-Object {
-                    $instanceName = $null;
-                    $currSum = $null;
+                    $instanceName = $null
+                    $currSum = $null
                     $returnObj = New-Object PSCustomObject
-                    $InstanceName = ($_.Group.InstanceName.ToLower() | Select-Object -Unique);
-                    if ($InstanceName.Count > 1)
-                    {
-                        $InstanceName = $InstanceName[0]
-                    }
+                    $InstanceName = ($_.Group.InstanceName.ToLower() | Select-Object -Unique)
                     $currSum = $_.Group | Measure-Object PretaxCost -Sum 
-                    $returnObj | Add-Member -MemberType NoteProperty -Name 'Name' -Value $InstanceName;
-                    $returnObj | Add-Member -MemberType NoteProperty -Name 'Sum' -Value $currSum.Sum;
+                    $returnObj | Add-Member -MemberType NoteProperty -Name 'Name' -Value $InstanceName
+                    $returnObj | Add-Member -MemberType NoteProperty -Name 'Sum' -Value $currSum.Sum
                     Write-Host $returnObj
                     $null = $returnArray.Add($returnObj)
                 }
