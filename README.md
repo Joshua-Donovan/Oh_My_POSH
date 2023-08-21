@@ -9,7 +9,7 @@
 
 
 ## What it does
-![Screenshot of the POSH](images\Screenshot.png)
+![Screenshot of the POSH](images/Screenshot.png)
 
 This PowerShell Profile Script and Oh My Posh Template tracks your Azure Spend in real time and even has the ability to display your desired items by tag!
 
