@@ -131,6 +131,35 @@ $Runspace.Open()
             return "No Tagged Resources"
         }
     }
+
+    function Get-AzureCostTop3($Report) {
+        try {
+            $returnArray = New-Object System.Collections.ArrayList
+            ($Report | Group-Object -Property InstanceId) `
+            | Foreach-Object {
+                    $instanceId = $null;
+                    $currSum = $null;
+                    $returnObj = New-Object PSCustomObject
+                    $InstanceName = ($_.Group.InstanceName.ToLower() | Select-Object -Unique);
+                    if ($InstanceName.Count > 1)
+                    {
+                        $InstanceName = $InstanceName[0]
+                    }
+                    $currSum = $_.Group | Measure-Object PretaxCost -Sum 
+                    $returnObj | Add-Member -MemberType NoteProperty -Name 'Name' -Value $InstanceName;
+                    $returnObj | Add-Member -MemberType NoteProperty -Name 'Sum' -Value $currSum.Sum;
+                    Write-Host $returnObj
+                    $null = $returnArray.Add($returnObj)
+                }
+            $top3 = $returnArray | Sort-Object Sum -Descending | Select-Object -First 3
+            $formattedString = ""
+            $($top3 | Foreach-Object {$formattedString = "$formattedString $($_.Name):`$$($_.Sum.ToString('##0.000')) ·"})
+            return $formattedString
+        } catch {
+            $env:POSH_AZURE_STATUS = "Top3 Spenders error: $($error[0] | Select-Object *)"
+        }
+    }
+
     $firstRun = $true
     # do work
     do {
@@ -152,6 +181,9 @@ $Runspace.Open()
             }
             if ($CostReport){
                 $env:POSH_MONITORED_AZURE_SUBSCRIPTION = "$($CostReport[0].SubscriptionName)"
+            }
+            if ($CostReport){
+                $env:POSH_AZURE_BIG_SPENDERS = Get-AzureCostTop3 -Report $CostReport
             }
             $env:POSH_AZURE_TIME_TILL_RESET = Get-DaysTillReset
             $env:POSH_AZURE_COST_SERVERS = Get-AzureCostbyTag -Report $CostReport -TagName 'app_group' -TagValue 'servers'
