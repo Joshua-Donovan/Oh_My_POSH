@@ -77,7 +77,7 @@ Install-Module -Name Az -Repository PSGallery
 ```
 Install-Module -Name Az.ResourceGraph -Repository PSGallery
 ```
-### Secrets
+### Secrets / Environment
 ```
 Install-Module -Name Microsoft.PowerShell.SecretManagement -Repository PSGallery
 Install-Module -Name Microsoft.PowerShell.SecretStore -Repository PSGallery
