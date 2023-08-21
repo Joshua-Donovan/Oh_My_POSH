@@ -131,7 +131,7 @@ I am choosing to set my authentication to none for ease of use, don't follow thi
 ```
 Set-SecretStoreConfiguration -Authentication none
 ```
-Fill in your application registration data we copied earlier
+Fill in your application registration data we copied earlier plus the SubscriptionID we are monitoring
 ```
 Set-Secret -Name POSH_AZURE_TENANT_ID -Secret "{ Tenant ID }" -Vault PWSH_PROFILE
 Set-Secret -Name POSH_AZURE_SUBSCRIPTION_ID -Secret "{ Subscription ID }" -Vault PWSH_PROFILE
