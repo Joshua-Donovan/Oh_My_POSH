@@ -137,7 +137,7 @@ $Runspace.Open()
             $returnArray = New-Object System.Collections.ArrayList
             ($Report | Group-Object -Property InstanceId) `
             | Foreach-Object {
-                    $instanceId = $null;
+                    $instanceName = $null;
                     $currSum = $null;
                     $returnObj = New-Object PSCustomObject
                     $InstanceName = ($_.Group.InstanceName.ToLower() | Select-Object -Unique);
