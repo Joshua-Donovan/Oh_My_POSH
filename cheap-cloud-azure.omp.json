@@ -5,16 +5,16 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#022046",
-          "foreground": "#ffffff",
+          "background": "#1c304b",
+          "foreground": "#bfd7f8",
           "trailing_diamond": "\ue0b0",
           "style": "diamond",
-          "template": " \uebd8 {{ .Name }} ",
-          "type": "az"
+          "template": "{{if .Env.POSH_MONITORED_AZURE_SUBSCRIPTION }} \uebd8\u2800\uf441\u2800{{ .Env.POSH_MONITORED_AZURE_SUBSCRIPTION }} {{ end }}",
+          "type": "text"
         },
         {
-          "background": "#022046",
-          "foreground": "#ffffff",
+          "background": "#1c304b",
+          "foreground": "#bfd7f8",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "trailing_diamond": "\ue0b0",
           "style": "diamond",
@@ -22,8 +22,8 @@
           "type": "text"
         },
         {
-          "background": "#022046",
-          "foreground": "#ffffff",
+          "background": "#1c304b",
+          "foreground": "#bfd7f8",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "trailing_diamond": "<background,transparent>\ue0b4</>",
           "style": "diamond",
@@ -47,22 +47,28 @@
       "newline": true,
       "segments": [
         {
-          "background": "#06e2ff",
+          "background": "#331919",
           "background_templates": [
-            "{{ if gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 100.00 }}#047f15{{ end }}",
-            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 100 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 75) }}#63b605{{ end }}",
-            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 75 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 50) }}#b64805{{ end }}",
-            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 50 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 0) }}#b60505{{ end }}"
+            "{{ if gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 100.00 }}#1e4123{{ end }}",
+            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 100 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 75) }}#533828{{ end }}",
+            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 75 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 50) }}#553b2b{{ end }}",
+            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 50 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 0) }}#331919{{ end }}"
           ],
-          "foreground": "#ffffff",
+          "foreground": "#f1bfbf",
+          "foreground_templates": [
+            "{{ if gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 100.00 }}#bcf7c5{{ end }}",
+            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 100 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 75) }}#f5d7c6{{ end }}",
+            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 75 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 50) }}#f3d0ba{{ end }}",
+            "{{ if and ( lt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 50 ) (gt (.Env.POSH_AZURE_TOTAL_REMAINING | float64) 0) }}#f1bfbf{{ end }}"
+          ],
           "trailing_diamond": "<background,transparent>\ue0b0</>",
           "style": "diamond",
           "template": "{{ if .Env.POSH_AZURE_TOTAL_COST }} \uebd8  \uf0d6\u2800{{ .Env.POSH_AZURE_TOTAL_COST }} \uf0e4\u2800{{ .Env.POSH_AZURE_TOTAL_REMAINING }} {{ end }}",
           "type": "text"
         },
         {
-          "background": "#4d258f",
-          "foreground": "#efe1ff",
+          "background": "#3a2c52",
+          "foreground": "#ceb7f1",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "trailing_diamond": "<background,transparent>\ue0b0</>",
           "style": "diamond",
@@ -70,13 +76,28 @@
           "type": "text"
         },
         {
-          "background": "#4d258f",
-          "foreground": "#efe1ff",
+          "background": "#3a2c52",
+          "foreground": "#ceb7f1",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "trailing_diamond": "<background,transparent>\ue0b4</>",
           "style": "diamond",
           "template": "{{ if .Env.POSH_AZURE_COST_WEB_SERVERS }} \uf02c\u2800{{ .Env.POSH_AZURE_COST_WEB_SERVERS }} {{ end }}",
           "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "#022046",
+          "foreground": "#ffffff",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "template": "{{ if .Name }} \uebd8\u2800\u2800 \uf489\u2800\u2800 {{ .Name }} | {{ .Origin }} {{ end }}",
+          "type": "az"
         }
       ],
       "type": "prompt"
