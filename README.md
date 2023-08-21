@@ -11,7 +11,7 @@
 ## What it does
 ![Screenshot of the POSH](images/Screenshot.png)
 
-This PowerShell Profile Script and Oh My Posh Template tracks your Azure Spend in real time and even has the ability to display your desired items by tag!
+This PowerShell Profile Script and Oh My Posh Template tracks Azure Spend in real time (5 minute intervals) and even has the ability to display your desired resource grouping costs by resource tags!
 
 The PowerShell Profile Script uses runspaces to allow for async processing of your Azure Reports without slowing down your access to the console (much). Because runspaces are a new thread inside the same process and not a new process (like Start-Job) we can pass information back to Oh My Posh through environment variables. 
 
