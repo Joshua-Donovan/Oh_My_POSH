@@ -124,6 +124,7 @@
         {
           "background": "#022046",
           "foreground": "#ffffff",
+          "leading_diamond": "<transparent,background>\ue0b0</>",
           "trailing_diamond": "\ue0b0",
           "style": "diamond",
           "template": "{{ if .Name }} \uebd8\u2800\u2800 \uf489\u2800\u2800 {{ .Name }} | {{ .Origin }} {{ end }}",
