@@ -92,12 +92,12 @@
       "newline": true,
       "segments": [
         {
-          "background": "#022046",
-          "foreground": "#ffffff",
-          "trailing_diamond": "\ue0b0",
+          "background": "#1e4123",
+          "foreground": "#bcf7c5",
+          "trailing_diamond": "<background,transparent>\ue0b4</>",
           "style": "diamond",
-          "template": "{{ if .Name }} \uebd8\u2800\u2800 \uf489\u2800\u2800 {{ .Name }} | {{ .Origin }} {{ end }}",
-          "type": "az"
+          "template": "{{ if .Env.POSH_AZURE_BIG_SPENDERS }} \uf155\u2800Big Spenders:{{ .Env.POSH_AZURE_BIG_SPENDERS }} {{ end }}",
+          "type": "text"
         }
       ],
       "type": "prompt"
@@ -120,6 +120,14 @@
           "style": "plain",
           "template": "<transparent,background>\ue0b0</></> \uf489 {{ .Name }} <#0077c2,transparent>\ue0b0</>",
           "type": "shell"
+        },
+        {
+          "background": "#022046",
+          "foreground": "#ffffff",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "template": "{{ if .Name }} \uebd8\u2800\u2800 \uf489\u2800\u2800 {{ .Name }} | {{ .Origin }} {{ end }}",
+          "type": "az"
         },
         {
           "type": "dotnet",
