@@ -19,7 +19,9 @@ In the current configuration, this data updates once every 5 minutes.
 
 I did find that using the Az Module in the runspaces with a service principal was causing my main console to have its AzContext set to the service principal when the report is ran. So, that is why the Az cmdlets are run within jobs on a different process to avoid screwing with the current AzContext I might be actively using.
 
-> NOTE: I have not added automatically pulling a budget total for the remaining cost. This is "hard coded" in the PowerShell Profile to 150.00. 
+> NOTE: I have not added automatically pulling a budget total for the remaining cost. This is "hard coded" in the PowerShell Profile to 150.00.
+
+> NOTE: I manually have my billing periods "hard coded" to the 15th of each month in the "Get-DaysTillReset" function. 
 
 ## Environment
 - Windows 10/11
