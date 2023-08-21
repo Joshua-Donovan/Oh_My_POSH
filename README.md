@@ -17,7 +17,9 @@ The PowerShell Profile Script uses runspaces to allow for async processing of yo
 
 In the current configuration, this data updates once every 5 minutes. 
 
-I did find that using the Az Module in the runspaces with a service principal was causing my main console to have its AzContext set to the service principal when the report is ran. So, that is why the Az cmdlets are run within jobs on a different process to avoid screwing with the current AzContext I might be actively using. 
+I did find that using the Az Module in the runspaces with a service principal was causing my main console to have its AzContext set to the service principal when the report is ran. So, that is why the Az cmdlets are run within jobs on a different process to avoid screwing with the current AzContext I might be actively using.
+
+> NOTE: I have not added where it will automatically pull a budget value for the remaining cost. This is "hard coded" in the PowerShell Profile to 150.00. 
 
 ## Environment
 - Windows 10/11
