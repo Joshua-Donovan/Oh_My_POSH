@@ -3,7 +3,7 @@
 > 
 > Nothing here is guaranteed to work outside of my environment.
 >
-> Use at your own risk. This repository carry's no warranty or support.
+> Use at your own risk. This repository carrys no warranty or support.
 > 
 
 
